@@ -22,7 +22,7 @@ class Diagram extends Component {
     var workflow = this.props.current_workflow
     const showchild = this.state.showchild
     if (workflow && workflow.children.length > 0) {
-      var sign = showchild ? '+' : '-'
+      var sign = showchild ? '-' : '+'
     }
 
     if (workflow) {

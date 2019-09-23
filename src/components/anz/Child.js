@@ -33,6 +33,7 @@ class Child extends Component {
       const grands = []
       const saveClick = this.onClick
 
+      // it is to hide but fill the space
       if (!divshow) {
         const line2child = []
         children.map((v, i) =>
@@ -59,7 +60,7 @@ class Child extends Component {
         const grandchild = value.children
         if (grandchild && grandchild.length > 0) {
           // sign
-          const sign = arrshow[myname] ? '+' : '-'
+          const sign = arrshow[myname] ? '-' : '+'
           if (sign) {
             const signbox = (
               <span className={'item-relative '} key={myname + '-sign'}>
