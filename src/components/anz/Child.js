@@ -28,38 +28,43 @@ class Child extends Component {
     const arrshow = this.state.arrshow
 
     if (children.length > 0) {
-      var top3 = []
-      var grands = []
+      var line2 = []
+      const grands = []
       const saveClick = this.onClick
 
       function printChildren(value) {
-        let tmp4 = (
-          <div className='item' key={value.name} onClick={e => saveClick(value.name, e)}>
-            {value.name}
+        // second level child
+        const myname = value.name
+        const line2child = (
+          <div className='item' key={myname} onClick={e => saveClick(myname, e)}>
+            {myname}
           </div>
         )
-        top3.push(tmp4)
+        line2.push(line2child)
 
-        let grandchild = value.children
+        const grandchild = value.children
         if (grandchild && grandchild.length > 0) {
-          let sign = arrshow[value.name] ? '+' : '-'
+          // sign
+          const sign = arrshow[myname] ? '+' : '-'
           if (sign) {
-            var signbox = (
-              <span className='item-relative' key={value.name + '-sign'}>
+            const signbox = (
+              <span className='item-relative' key={myname + '-sign'}>
                 {sign}
               </span>
             )
-            top3.push(signbox)
+            line2.push(signbox)
           }
-          if (arrshow[value.name]) {
-            let tmp5 = (
+
+          // grandchildren
+          if (arrshow[myname]) {
+            const mygrand = (
               <Child
                 children={grandchild}
-                key={value.name + '.children'}
-                parentcount={parentcount}
+                key={myname + '-child'}
+                parentcount={children.length}
               ></Child>
             )
-            grands.push(tmp5)
+            grands.push(mygrand)
           }
         }
       }
@@ -67,14 +72,14 @@ class Child extends Component {
       children.forEach(printChildren)
 
       if (grands.length > 0) {
-        var grandsFragment = <div className='mysamerow'>{grands}</div>
+        var line3 = <div className='mysamerow'>{grands}</div>
       }
     }
 
     return (
       <Fragment>
-        <div className={'myrow '}>{top3}</div>
-        {grandsFragment}
+        <div className={'myrow '}>{line2}</div>
+        {line3}
       </Fragment>
     )
   }
