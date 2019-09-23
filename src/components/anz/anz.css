@@ -27,7 +27,7 @@ body {
   justify-content: space-evenly;
   align-items: center;
   align-content: space-between;
-  width:13vw;
+  /* width:13vw; */
   height: 16vh;
   margin: 2vw;
   background-color: #D6E9FE;
@@ -42,6 +42,7 @@ body {
   border: 1px solid #000;
   width : 10vw;
   height : 10vh;
+  margin: 2vw;
 }
 
 .row1 {

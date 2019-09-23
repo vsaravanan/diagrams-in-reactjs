@@ -3,11 +3,6 @@ import React, { Component, Fragment } from 'react'
 import './anz.css'
 
 class Child extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.elements = new Map()
-  // }
-
   state = {
     arrshow: {},
   }
@@ -17,58 +12,29 @@ class Child extends Component {
     var arrshow = this.state.arrshow
     children.map(v => (arrshow[v.name] = false))
     this.setState({ arrshow })
-    // var elements = this.elements
-    children.map(v => {
-      // console.log('mounting ' + v.name + '  ' + arrshow[v.name])
-      // elements.set(v.name, null)
-      return null
-    })
   }
 
   onClick = (childname, e) => {
     console.log(' childname : ' + childname)
-    // var children = this.props.children
     var arrshow = this.state.arrshow
-    // children.map(v => console.log(v.name + ' before ' + arrshow[v.name]))
     arrshow[childname] = !arrshow[childname]
     this.setState({ arrshow })
-    // children.map(v => console.log(v.name + ' after  ' + arrshow[v.name]))
-
-    // this.setState({ mymarginleft: e.target.getBoundingClientRect().left })
-    // console.log('mymarginleft ' + this.state.mymarginleft)
-    // var elements = this.elements
-    // children.map(v => {
-    //   let tmp = elements.get(v.name)
-    //   console.log(v.name + ' ---------> ' + tmp.getBoundingClientRect().left)
-    //   console.log(v.name + ' ---------> ' + tmp.getBoundingClientRect().width)
-    //   return null
-    // })
   }
 
   render() {
     var children = this.props.children
-    // const parentmargin = this.props.parentmargin
+    const parentcount = this.props.parentcount
+    console.log('parentcount ' + parentcount)
     const arrshow = this.state.arrshow
-    // const elements = this.elements
-    // const mymarginleft = this.state.mymarginleft
 
     if (children.length > 0) {
       var top3 = []
       var grands = []
       const saveClick = this.onClick
 
-      let grandchildcounts = 0
-
       function printChildren(value) {
         let tmp4 = (
-          <div
-            className='item'
-            key={value.name}
-            // ref={e => {
-            //   elements.set(value.name, e)
-            // }}
-            onClick={e => saveClick(value.name, e)}
-          >
+          <div className='item' key={value.name} onClick={e => saveClick(value.name, e)}>
             {value.name}
           </div>
         )
@@ -76,8 +42,6 @@ class Child extends Component {
 
         let grandchild = value.children
         if (grandchild && grandchild.length > 0) {
-          grandchildcounts += grandchild.length
-          // console.log(' grandchildcounts ' + grandchildcounts)
           let sign = arrshow[value.name] ? '+' : '-'
           if (sign) {
             var signbox = (
@@ -92,43 +56,28 @@ class Child extends Component {
               <Child
                 children={grandchild}
                 key={value.name + '.children'}
-                // parentmargin={mymarginleft}
+                parentcount={parentcount}
               ></Child>
             )
             grands.push(tmp5)
           }
         }
       }
-      //if (children.length > 0) {
-      children.forEach(printChildren)
 
-      var rowsize = grandchildcounts > children.length ? grandchildcounts : children.length
-      rowsize = 'row' + rowsize
-      // console.log('rowsize ' + rowsize + ', grandchildcounts ' + grandchildcounts)
+      children.forEach(printChildren)
 
       if (grands.length > 0) {
         var grandsFragment = <div className='mysamerow'>{grands}</div>
       }
-      //}
     }
 
     return (
-      // style={{ 'marginLeft': `${parentmargin}px` }}
       <Fragment>
-        <div className={'myrow ' + rowsize}>{top3}</div>
+        <div className={'myrow '}>{top3}</div>
         {grandsFragment}
       </Fragment>
     )
   }
 }
-
-// const mapStateToProps = state => ({
-//   current_workflow: state.workflow.current,
-// })
-
-// export default connect(
-//   mapStateToProps,
-//   { action_workflow },
-// )(Child)
 
 export default Child
