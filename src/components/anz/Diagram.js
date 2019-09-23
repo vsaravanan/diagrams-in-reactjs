@@ -39,7 +39,7 @@ class Diagram extends Component {
       }
 
       if (showchild && workflow.children.length > 0) {
-        var line2 = <Child children={workflow.children} parentcount={1} show={true}></Child>
+        var line2 = <Child children={workflow.children} show={true}></Child>
       }
     }
 

@@ -24,15 +24,10 @@ body {
 
 .myrow {
   display: flex;
-  /* justify-content: space-evenly; */
-  /* align-items: center; */
-  /* align-content: space-between; */
-  /* width:13vw; */
   height: 16vh;
   margin: 2vw;
   background-color: #D6E9FE;
 }
-
 
 
 .item {
@@ -45,7 +40,7 @@ body {
   margin: 2vw;
 }
 
-.break {
+.filler {
 
   flex-grow: 1;
   display: flex;
@@ -57,39 +52,10 @@ body {
   background-color: initial;
 }
 
-.filler {
+.fillergroup {
   display: flex;
   height: 16vh;
   margin: 2vw;
-}
-
-/* .myrow_show  {
-  display: block;
-
-}
-
-.myrow_hide {
-  display: none;
-} */
-
-.row1 {
-  width:13vw;
-}
-
-.row2 {
-  width:26vw;
-}
-
-.row3 {
-  width:39vw;
-}
-
-.row4 {
-  width:42vw;
-}
-
-.row5 {
-  width:55vw;
 }
 
 .item-relative {
