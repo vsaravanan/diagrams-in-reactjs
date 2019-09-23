@@ -24,31 +24,36 @@ class Diagram extends Component {
     if (workflow && workflow.children.length > 0) {
       var sign = children ? '+' : '-'
     }
-    var top1
+
     if (workflow) {
       console.log(workflow.name)
 
-      if (children && workflow.children.length > 0) {
-        var top2 = <Child children={workflow.children} parentcount={1}></Child>
-      }
-
-      if (sign) {
-        var signbox = <span className='item-relative2'> {sign} </span>
-      }
-      top1 = (
-        <div className='container'>
-          <div className='myrow'>
-            <div className='item' onClick={this.onClick}>
-              {workflow.name}
-            </div>
-            {signbox}
-          </div>
-          {top2}
+      var line1 = (
+        <div className='item' onClick={this.onClick}>
+          {workflow.name}
         </div>
       )
+
+      if (sign) {
+        var signbox = <span className='item-relative'> {sign} </span>
+      }
+
+      if (children && workflow.children.length > 0) {
+        var line2 = <Child children={workflow.children} parentcount={1}></Child>
+      }
     }
 
-    return <Fragment>{top1}</Fragment>
+    return (
+      <Fragment>
+        <div className='container'>
+          <div className='myrow'>
+            {line1}
+            {signbox}
+          </div>
+          {line2}
+        </div>
+      </Fragment>
+    )
   }
 }
 

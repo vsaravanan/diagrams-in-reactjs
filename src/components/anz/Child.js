@@ -82,7 +82,7 @@ class Child extends Component {
           let sign = childarray[value.name] ? '+' : '-'
           if (sign) {
             var signbox = (
-              <span className='item-relative2' key={value.name + '-sign'}>
+              <span className='item-relative' key={value.name + '-sign'}>
                 {sign}
               </span>
             )

@@ -64,7 +64,7 @@ body {
   width:55vw;
 }
 
-.item-relative2 {
+.item-relative {
   position: relative;
   left: -7vw;
   align-self: flex-end;
