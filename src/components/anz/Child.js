@@ -3,23 +3,23 @@ import React, { Component, Fragment } from 'react'
 import './anz.css'
 
 class Child extends Component {
-  constructor(props) {
-    super(props)
-    this.elements = new Map()
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.elements = new Map()
+  // }
 
   state = {
-    childarray: {},
+    arrshow: {},
   }
 
   componentDidMount() {
     var children = this.props.children
-    var childarray = this.state.childarray
-    children.map(v => (childarray[v.name] = false))
-    this.setState({ childarray })
+    var arrshow = this.state.arrshow
+    children.map(v => (arrshow[v.name] = false))
+    this.setState({ arrshow })
     // var elements = this.elements
     children.map(v => {
-      console.log(v.name + '  ' + childarray[v.name])
+      // console.log('mounting ' + v.name + '  ' + arrshow[v.name])
       // elements.set(v.name, null)
       return null
     })
@@ -27,12 +27,12 @@ class Child extends Component {
 
   onClick = (childname, e) => {
     console.log(' childname : ' + childname)
-    var children = this.props.children
-    var childarray = this.state.childarray
-    children.map(v => console.log(v.name + ' before ' + childarray[v.name]))
-    childarray[childname] = !childarray[childname]
-    this.setState({ childarray })
-    children.map(v => console.log(v.name + ' after  ' + childarray[v.name]))
+    // var children = this.props.children
+    var arrshow = this.state.arrshow
+    // children.map(v => console.log(v.name + ' before ' + arrshow[v.name]))
+    arrshow[childname] = !arrshow[childname]
+    this.setState({ arrshow })
+    // children.map(v => console.log(v.name + ' after  ' + arrshow[v.name]))
 
     // this.setState({ mymarginleft: e.target.getBoundingClientRect().left })
     // console.log('mymarginleft ' + this.state.mymarginleft)
@@ -48,12 +48,11 @@ class Child extends Component {
   render() {
     var children = this.props.children
     // const parentmargin = this.props.parentmargin
-    const childarray = this.state.childarray
+    const arrshow = this.state.arrshow
     // const elements = this.elements
     // const mymarginleft = this.state.mymarginleft
 
     if (children.length > 0) {
-      console.log(children.length)
       var top3 = []
       var grands = []
       const saveClick = this.onClick
@@ -78,17 +77,17 @@ class Child extends Component {
         let grandchild = value.children
         if (grandchild && grandchild.length > 0) {
           grandchildcounts += grandchild.length
-          console.log(' grandchildcounts ' + grandchildcounts)
-          let sign = childarray[value.name] ? '+' : '-'
+          // console.log(' grandchildcounts ' + grandchildcounts)
+          let sign = arrshow[value.name] ? '+' : '-'
           if (sign) {
             var signbox = (
               <span className='item-relative' key={value.name + '-sign'}>
                 {sign}
               </span>
             )
+            top3.push(signbox)
           }
-          top3.push(signbox)
-          if (childarray[value.name]) {
+          if (arrshow[value.name]) {
             let tmp5 = (
               <Child
                 children={grandchild}
@@ -105,7 +104,7 @@ class Child extends Component {
 
       var rowsize = grandchildcounts > children.length ? grandchildcounts : children.length
       rowsize = 'row' + rowsize
-      console.log('rowsize ' + rowsize + ', grandchildcounts ' + grandchildcounts)
+      // console.log('rowsize ' + rowsize + ', grandchildcounts ' + grandchildcounts)
 
       if (grands.length > 0) {
         var grandsFragment = <div className='mysamerow'>{grands}</div>

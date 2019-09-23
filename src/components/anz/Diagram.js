@@ -8,21 +8,21 @@ import Child from './Child'
 
 class Diagram extends Component {
   state = {
-    children: false,
+    showchild: false,
   }
   componentDidMount() {
     this.props.action_workflow(data)
   }
 
   onClick = () => {
-    this.setState({ children: !this.state.children })
+    this.setState({ showchild: !this.state.showchild })
   }
 
   render() {
     var workflow = this.props.current_workflow
-    const children = this.state.children
+    const showchild = this.state.showchild
     if (workflow && workflow.children.length > 0) {
-      var sign = children ? '+' : '-'
+      var sign = showchild ? '+' : '-'
     }
 
     if (workflow) {
@@ -38,7 +38,7 @@ class Diagram extends Component {
         var signbox = <span className='item-relative'> {sign} </span>
       }
 
-      if (children && workflow.children.length > 0) {
+      if (showchild && workflow.children.length > 0) {
         var line2 = <Child children={workflow.children} parentcount={1}></Child>
       }
     }
