@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { action_workflow } from 'actions/action-workflow'
-import data1 from 'components/anz/data1'
+import data from 'components/anz/data'
 
 import './anz.css'
 import Child from './Child'
@@ -11,8 +11,7 @@ class Diagram extends Component {
     children: false,
   }
   componentDidMount() {
-    console.log(data1)
-    this.props.action_workflow(data1)
+    this.props.action_workflow(data)
   }
 
   onClick = () => {

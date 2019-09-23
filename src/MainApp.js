@@ -4,7 +4,6 @@ import { ConnectedRouter } from 'connected-react-router'
 import { Route, Switch } from 'react-router'
 import configureStore, { history } from './store'
 
-// import App from './App'
 import Diagram from 'components/anz/Diagram'
 
 const store = configureStore()

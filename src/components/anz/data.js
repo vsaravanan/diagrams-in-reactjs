@@ -1,14 +1,27 @@
 var data = {
-  id: 1,
-  name: 'All Categories',
+  name: 'Umberlla Inc',
   children: [
     {
-      id: 2,
-      name: 'Audio & Stereo',
+      name: 'Brolly',
+      children: [
+        {
+          name: 'Handle',
+        },
+        {
+          name: 'Wire',
+        },
+        {
+          name: 'Another',
+        },
+      ],
     },
     {
-      id: 3,
-      name: 'Baby & Kids Stuff',
+      name: 'Shade',
+      children: [
+        {
+          name: 'Rain',
+        },
+      ],
     },
   ],
 }
