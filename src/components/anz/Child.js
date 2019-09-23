@@ -17,10 +17,10 @@ class Child extends Component {
     var childarray = this.state.childarray
     children.map(v => (childarray[v.name] = false))
     this.setState({ childarray })
-    var elements = this.elements
+    // var elements = this.elements
     children.map(v => {
       console.log(v.name + '  ' + childarray[v.name])
-      elements.set(v.name, null)
+      // elements.set(v.name, null)
       return null
     })
   }
@@ -34,23 +34,23 @@ class Child extends Component {
     this.setState({ childarray })
     children.map(v => console.log(v.name + ' after  ' + childarray[v.name]))
 
-    this.setState({ mymarginleft: e.target.getBoundingClientRect().left })
-    console.log('mymarginleft ' + this.state.mymarginleft)
-    var elements = this.elements
-    children.map(v => {
-      let tmp = elements.get(v.name)
-      console.log(v.name + ' ---------> ' + tmp.getBoundingClientRect().left)
-      console.log(v.name + ' ---------> ' + tmp.getBoundingClientRect().width)
-      return null
-    })
+    // this.setState({ mymarginleft: e.target.getBoundingClientRect().left })
+    // console.log('mymarginleft ' + this.state.mymarginleft)
+    // var elements = this.elements
+    // children.map(v => {
+    //   let tmp = elements.get(v.name)
+    //   console.log(v.name + ' ---------> ' + tmp.getBoundingClientRect().left)
+    //   console.log(v.name + ' ---------> ' + tmp.getBoundingClientRect().width)
+    //   return null
+    // })
   }
 
   render() {
     var children = this.props.children
-    const parentmargin = this.props.parentmargin
+    // const parentmargin = this.props.parentmargin
     const childarray = this.state.childarray
-    const elements = this.elements
-    const mymarginleft = this.state.mymarginleft
+    // const elements = this.elements
+    // const mymarginleft = this.state.mymarginleft
 
     if (children.length > 0) {
       console.log(children.length)
@@ -65,9 +65,9 @@ class Child extends Component {
           <div
             className='item'
             key={value.name}
-            ref={e => {
-              elements.set(value.name, e)
-            }}
+            // ref={e => {
+            //   elements.set(value.name, e)
+            // }}
             onClick={e => saveClick(value.name, e)}
           >
             {value.name}
@@ -93,7 +93,7 @@ class Child extends Component {
               <Child
                 children={grandchild}
                 key={value.name + '.children'}
-                parentmargin={mymarginleft}
+                // parentmargin={mymarginleft}
               ></Child>
             )
             grands.push(tmp5)

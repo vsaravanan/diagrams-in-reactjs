@@ -29,7 +29,7 @@ class Diagram extends Component {
       console.log(workflow.name)
 
       if (children && workflow.children.length > 0) {
-        var top2 = <Child children={workflow.children} parentmargin={100}></Child>
+        var top2 = <Child children={workflow.children} parentcount={1}></Child>
       }
 
       if (sign) {
