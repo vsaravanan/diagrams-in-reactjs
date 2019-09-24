@@ -56,60 +56,43 @@ class Child extends Component {
       return encloseline2
     }
 
-    const printChildren = value => {
+    const printChildren = mydata => {
       // second level child
-      const myname = value.name
-      const line2child = (
-        <div className={'item '} key={myname} onClick={e => saveClick(myname, e)}>
-          {myname}
-        </div>
+      const myname = mydata.name
+      const line2childs = printLine2child(myname)
+      line2childs && line2.push(line2childs)
+
+      const grandchild = mydata.children
+
+      // sign
+      const mysign = addsign(myname)
+      mysign && line2.push(mysign)
+
+      // grandchildren
+
+      const mygrand = (
+        <Child children={grandchild} key={myname + '-child'} show={arrshow[myname]}></Child>
       )
-      line2.push(line2child)
-
-      const grandchild = value.children
-
-      if (grandchild && grandchild.length > 0) {
-        // sign
-        const mysign = addsign(myname)
-        mysign && line2.push(mysign)
-
-        // grandchildren
-
-        const mygrand = (
-          <Child
-            children={grandchild}
-            key={myname + '-child'}
-            // parentcount={children.length}
-            show={arrshow[myname]}
-          ></Child>
-        )
-        grands.push(mygrand)
-      }
-
-      const mynewlist = value.list
-      if (mynewlist) {
-        // grands.push(dummy)
-
-        const my4th = <Line4 key={myname + '-4th'} list={mynewlist} show={arrshow[myname]}></Line4>
-
-        leaves.push(my4th)
-      }
+      grands.push(mygrand)
     }
 
-    const printList = value => {
-      // second level child
-      const myname = value.name
+    const printLine2child = myname => {
       const line2child = (
         <div className={'item '} key={myname} onClick={e => saveClick(myname, e)}>
           {myname}
         </div>
       )
-      line2.push(line2child)
+      return line2child
+    }
 
-      const mynewlist = value.list
+    const printList = mydata => {
+      // second level child
+      const myname = mydata.name
+      const line2childs = printLine2child(myname)
+      line2childs && line2.push(line2childs)
+
+      const mynewlist = mydata.list
       if (mynewlist) {
-        // grands.push(dummy)
-
         const my4th = <Line4 key={myname + '-4th'} list={mynewlist} show={arrshow[myname]}></Line4>
 
         leaves.push(my4th)
@@ -124,12 +107,14 @@ class Child extends Component {
         return printFiller(children.length)
       }
 
-      children.filter(f => f.children).forEach(printChildren)
-      children.filter(f => f.list).forEach(printList)
+      children.filter(f => f.children && f.children.length > 0).forEach(printChildren)
 
       if (grands.length > 0) {
         var line3 = grands
       }
+
+      children.filter(f => f.list).forEach(printList)
+
       if (leaves.length > 0) {
         var line4 = <div className={'myrow '}>{leaves}</div>
       }
