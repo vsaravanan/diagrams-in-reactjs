@@ -38,7 +38,7 @@ class Child extends Component {
     const parentcount = this.props.parentcount
     // console.log('parentcount ' + parentcount)
     const arrshow = this.state.arrshow
-    const divshow = this.props.show
+    const shownextline = this.props.show
 
     const dummy = (
       <div className='item '>
@@ -61,10 +61,10 @@ class Child extends Component {
     //   var list = findlist && findlist.list
     // }
     var list
-    if (clicked === 'Handle') {
-      debugger
-      // return 'Welcome'
-    }
+    // if (clicked === 'Handle') {
+    //   debugger
+    //   // return 'Welcome'
+    // }
     if (list && list.length > 0) {
       // const leaf = []
       // const mylist = list
@@ -86,7 +86,7 @@ class Child extends Component {
       const saveClick = this.onClick
 
       // it is to hide but fill the space
-      if (!divshow) {
+      if (!shownextline) {
         const line2child = []
         children.map((v, i) =>
           line2child.push(<div className='filler ' key={'emptyitem' + i}></div>),
@@ -166,12 +166,7 @@ class Child extends Component {
             // grands.push(dummy)
 
             const my4th = (
-              <Line4
-                children={grandchild}
-                key={myname + '-4th'}
-                list={mynewlist}
-                show={arrshow[myname]}
-              ></Line4>
+              <Line4 key={myname + '-4th'} list={mynewlist} show={arrshow[myname]}></Line4>
             )
 
             leaves.push(my4th)

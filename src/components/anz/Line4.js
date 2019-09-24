@@ -22,14 +22,26 @@ class Line4 extends Component {
   // }
   render() {
     const list = this.props.list
-    const children = this.props.children
+    // const children = this.props.children
     const divshow = this.props.show
 
-    const dummy = (
-      <div className='item '>
-        <p>Dummy 1</p>
-      </div>
-    )
+    const line4 = []
+
+    function printChildren(myitem) {
+      // second level child
+      const line4item = (
+        <div className={'item '} key={'line4-' + myitem}>
+          {myitem}
+        </div>
+      )
+      line4.push(line4item)
+    }
+
+    // const dummy = (
+    //   <div className='item '>
+    //     <p>Dummy 1</p>
+    //   </div>
+    // )
 
     const filler = (
       <div className='fillergroup '>
@@ -38,7 +50,8 @@ class Line4 extends Component {
     )
 
     if (divshow) {
-      return dummy
+      list.forEach(printChildren)
+      return line4
     } else {
       return filler
     }
