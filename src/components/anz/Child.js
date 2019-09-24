@@ -96,6 +96,26 @@ class Child extends Component {
       }
     }
 
+    const printList = value => {
+      // second level child
+      const myname = value.name
+      const line2child = (
+        <div className={'item '} key={myname} onClick={e => saveClick(myname, e)}>
+          {myname}
+        </div>
+      )
+      line2.push(line2child)
+
+      const mynewlist = value.list
+      if (mynewlist) {
+        // grands.push(dummy)
+
+        const my4th = <Line4 key={myname + '-4th'} list={mynewlist} show={arrshow[myname]}></Line4>
+
+        leaves.push(my4th)
+      }
+    }
+
     if (children.length > 0) {
       var line2 = []
 
@@ -105,7 +125,7 @@ class Child extends Component {
       }
 
       children.filter(f => f.children).forEach(printChildren)
-      children.filter(f => f.list).forEach(printChildren)
+      children.filter(f => f.list).forEach(printList)
 
       if (grands.length > 0) {
         var line3 = grands
