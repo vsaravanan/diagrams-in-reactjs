@@ -6,7 +6,7 @@ var data = {
       children: [
         {
           name: 'Handle',
-          list: ['Facility 1', 'Facility 2'],
+          list: ['Facility 1'],
         },
         {
           name: 'Rain',
