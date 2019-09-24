@@ -56,6 +56,15 @@ class Child extends Component {
       return encloseline2
     }
 
+    const printChildItem = myname => {
+      const line2child = (
+        <div className={'item '} key={myname} onClick={e => saveClick(myname, e)}>
+          {myname}
+        </div>
+      )
+      return line2child
+    }
+
     const pushChildItem = mydata => {
       // second level child
       const myname = mydata.name
@@ -63,7 +72,7 @@ class Child extends Component {
       line2childs && line2.push(line2childs)
     }
 
-    const printChildren = mydata => {
+    const addGrandChild = mydata => {
       // second level child
       const myname = mydata.name
       const grandchild = mydata.children
@@ -80,16 +89,7 @@ class Child extends Component {
       grands.push(mygrand)
     }
 
-    const printChildItem = myname => {
-      const line2child = (
-        <div className={'item '} key={myname} onClick={e => saveClick(myname, e)}>
-          {myname}
-        </div>
-      )
-      return line2child
-    }
-
-    const printList = mydata => {
+    const addLine4 = mydata => {
       // second level child
       const myname = mydata.name
       const mynewlist = mydata.list
@@ -110,13 +110,13 @@ class Child extends Component {
 
       children.forEach(pushChildItem)
 
-      children.filter(f => f.children && f.children.length > 0).forEach(printChildren)
+      children.filter(f => f.children && f.children.length > 0).forEach(addGrandChild)
 
       if (grands.length > 0) {
         var line3 = grands
       }
 
-      children.filter(f => f.list).forEach(printList)
+      children.filter(f => f.list).forEach(addLine4)
 
       if (leaves.length > 0) {
         var line4 = <div className={'myrow '}>{leaves}</div>
