@@ -11,11 +11,7 @@ class Line4 extends Component {
 
     function printChildren(myitem) {
       // 4th level child
-      const line4item = (
-        <div className={'item '} key={'line4-' + myitem}>
-          {myitem}
-        </div>
-      )
+      const line4item = <li key={'line4-' + myitem}>{myitem}</li>
       line4.push(line4item)
     }
 
@@ -27,7 +23,11 @@ class Line4 extends Component {
 
     if (divshow) {
       list.forEach(printChildren)
-      return line4
+      return (
+        <div className='item' key='line4'>
+          <ul>{line4}</ul>
+        </div>
+      )
     } else {
       return filler
     }
