@@ -30,6 +30,29 @@ class Child extends Component {
     const grands = []
     const leaves = []
 
+    const addsign = item => {
+      const sign = arrshow[item] ? '-' : '+'
+      if (sign) {
+        const signbox = (
+          <span className={'item-relative '} key={item + '-sign'}>
+            {sign}
+          </span>
+        )
+        return signbox
+      }
+    }
+
+    const printFiller = () => {
+      const line2child = []
+      children.map((v, i) => line2child.push(<div className='filler ' key={'emptyitem' + i}></div>))
+      const emptygrands = (
+        <div className='fillergroup ' key={'emptygroup'}>
+          {line2child}
+        </div>
+      )
+      return emptygrands
+    }
+
     const printChildren = value => {
       // second level child
       const myname = value.name
@@ -44,15 +67,8 @@ class Child extends Component {
 
       if (grandchild && grandchild.length > 0) {
         // sign
-        const sign = arrshow[myname] ? '-' : '+'
-        if (sign) {
-          const signbox = (
-            <span className={'item-relative '} key={myname + '-sign'}>
-              {sign}
-            </span>
-          )
-          line2.push(signbox)
-        }
+        const mysign = addsign(myname)
+        mysign && line2.push(mysign)
 
         // grandchildren
 
@@ -82,16 +98,7 @@ class Child extends Component {
 
       // it is to hide but fill the space
       if (!shownextline) {
-        const line2child = []
-        children.map((v, i) =>
-          line2child.push(<div className='filler ' key={'emptyitem' + i}></div>),
-        )
-        const emptygrands = (
-          <div className='fillergroup ' key={'emptygroup'}>
-            {line2child}
-          </div>
-        )
-        return emptygrands
+        return printFiller()
       }
 
       children.filter(f => f.children).forEach(printChildren)
