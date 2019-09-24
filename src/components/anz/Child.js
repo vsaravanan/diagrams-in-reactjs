@@ -42,15 +42,18 @@ class Child extends Component {
       }
     }
 
-    const printFiller = () => {
-      const line2child = []
-      children.map((v, i) => line2child.push(<div className='filler ' key={'emptyitem' + i}></div>))
-      const emptygrands = (
+    const printFiller = i => {
+      const line2filler = []
+      for (var j = 0; j < i; j++) {
+        line2filler.push(<div className='filler ' key={'emptyitem-' + j}></div>)
+      }
+
+      const encloseline2 = (
         <div className='fillergroup ' key={'emptygroup'}>
-          {line2child}
+          {line2filler}
         </div>
       )
-      return emptygrands
+      return encloseline2
     }
 
     const printChildren = value => {
@@ -98,7 +101,7 @@ class Child extends Component {
 
       // it is to hide but fill the space
       if (!shownextline) {
-        return printFiller()
+        return printFiller(children.length)
       }
 
       children.filter(f => f.children).forEach(printChildren)
