@@ -6,20 +6,11 @@ var data = {
       children: [
         {
           name: 'Handle',
+          list: ['Facility 1'],
         },
-        {
-          name: 'Wire',
-        },
-        {
-          name: 'Another',
-        },
-      ],
-    },
-    {
-      name: 'Shade',
-      children: [
         {
           name: 'Rain',
+          list: ['Facility 6'],
         },
       ],
     },
