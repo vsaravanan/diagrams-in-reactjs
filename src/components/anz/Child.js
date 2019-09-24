@@ -117,9 +117,15 @@ class Child extends Component {
       }
 
       children.filter(f => f.list).forEach(addLine4)
+      const itemfound = Object.values(arrshow).includes(true)
 
       if (leaves.length > 0) {
-        var line4 = <div className={'myrow '}>{leaves}</div>
+        var line4
+        if (itemfound) {
+          line4 = <div className={'myrow '}>{leaves}</div>
+        } else {
+          line4 = leaves
+        }
       }
     }
 
