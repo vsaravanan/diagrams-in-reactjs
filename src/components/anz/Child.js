@@ -70,16 +70,16 @@ class Child extends Component {
       const myname = mydata.name
       const line2childs = printChildItem(myname)
       line2childs && line2.push(line2childs)
+
+      // sign
+      const mysign = addsign(myname)
+      mysign && line2.push(mysign)
     }
 
     const addGrandChild = mydata => {
       // second level child
       const myname = mydata.name
       const grandchild = mydata.children
-
-      // sign
-      const mysign = addsign(myname)
-      mysign && line2.push(mysign)
 
       // grandchildren
 
