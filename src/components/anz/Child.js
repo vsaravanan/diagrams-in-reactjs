@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 // import $ from 'jquery'
-import parse from 'html-react-parser'
+// import parse from 'html-react-parser'
 
 import Line4 from './Line4'
 import './anz.css'
@@ -22,11 +22,6 @@ class Child extends Component {
     var arrshow = this.state.arrshow
     arrshow[childname] = !arrshow[childname]
     this.setState({ arrshow })
-    // if (childname === 'Handle') {
-    //   debugger
-    //   // $('em').html('</em></div><div class="container"><em>')
-    // }
-
     // this.setState({ clicked: childname })
   }
 
@@ -67,7 +62,7 @@ class Child extends Component {
 
     const printChildItem = myname => {
       const line2child = (
-        <div className={'item '} key={myname} onClick={e => saveClick(myname, e)}>
+        <div className={'item '} key={myname + 'item'} onClick={e => saveClick(myname, e)}>
           {myname}
         </div>
       )
@@ -80,40 +75,29 @@ class Child extends Component {
       const line2childs = printChildItem(myname)
       line2childs && line2.push(line2childs)
 
-      // sign
-      // const mysign = addsign(myname)
-      // mysign && line2.push(mysign)
+      //sign
+      const mysign = addsign(myname)
+      mysign && line2.push(mysign)
     }
 
-    var grandchildindex = 0
+    // var grandchildindex = 0
+
     const addGrandChild = mydata => {
       // second level child
       const myname = mydata.name
       const grandchild = mydata.children
 
       // grandchildren
-      // {parse(`
-      // <li>Item 1</li>
-      // <li>Item 2</li>
-      // `)}
+
       // <div class='break'></div>
-      // </div><div class="container">
-
-      // const tmp1 = parse(`      <li>Item 1</li>      `)
-      // const tmp1 = parse(`      <\dddddddddd>      `)
-
       // {parse('</div><div class="container">')}
 
-      if (grandchildindex++ > 1) {
-      }
-
-      // const htmlFromCMS = `<li>Item 1</li>`
       // const htmlFromCMS2 = '</span</div><div class="container"><span>'
       // <span dangerouslySetInnerHTML={{ __html: htmlFromCMS2 }} />
 
       const mygrand = (
-        <Fragment>
-          <span>lvlgrand{this.props.level + 1}</span>
+        <Fragment key={myname + '-fragchild' + this.props.level + 1}>
+          {/* <span>lvlgrand{this.props.level + 1}</span> */}
           <Child
             children={grandchild}
             key={myname + '-child'}
@@ -132,7 +116,7 @@ class Child extends Component {
       if (mynewlist) {
         const my4th = (
           <Line4
-            key={myname + '-4th'}
+            key={myname + '-line4'}
             list={mynewlist}
             show={arrshow[myname]}
             level={this.props.level + 1}
@@ -162,7 +146,7 @@ class Child extends Component {
       children.filter(f => f.list).forEach(addLine4)
       const itemfound = Object.values(arrshow).includes(true)
       /* <span>lvlline{this.props.level + 1}</span>  */
-
+      // debugger
       if (leaves.length > 0) {
         var line4
         if (itemfound) {
@@ -175,25 +159,17 @@ class Child extends Component {
       var lastline
       if (this.props.level === 2) {
         lastline = (
-          <Fragment>
+          <Fragment key={'fraglastline' + this.props.level + 1}>
             <div className='mysamerow'>
-              <div className='container'>
-                {line3}
-                {line4}
-              </div>
+              {/* <div className='container'> */}
+              {line3}
+              {line4}
             </div>
-          </Fragment>
-        )
-      } else if (this.props.level === 3) {
-        lastline = (
-          <Fragment>
-            {line3}
-            {line4}
           </Fragment>
         )
       } else {
         lastline = (
-          <Fragment>
+          <Fragment key={'fraglastline' + this.props.level + 1}>
             {line3} {line4}
           </Fragment>
         )
@@ -201,7 +177,7 @@ class Child extends Component {
     }
 
     return (
-      <Fragment>
+      <Fragment key={'outer' + this.props.level + 1}>
         <div className={'myrow '}>{line2}</div>
         {lastline}
       </Fragment>

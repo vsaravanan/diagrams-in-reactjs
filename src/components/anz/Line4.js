@@ -22,17 +22,17 @@ class Line4 extends Component {
     )
 
     if (divshow) {
-      return (
-        <div className='item' key='line4'>
-          dummy
-        </div>
-      )
-      // list.forEach(printChildren)
       // return (
       //   <div className='item' key='line4'>
-      //     <ul>{line4}</ul>
+      //     dummy
       //   </div>
       // )
+      list.forEach(printChildren)
+      return (
+        <div className='item' key='line4'>
+          <ul>{line4}</ul>
+        </div>
+      )
     } else {
       return filler
     }
