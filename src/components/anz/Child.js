@@ -30,6 +30,7 @@ class Child extends Component {
     const arrshow = this.state.arrshow
     const shownextline = this.props.show
     const saveClick = this.onClick
+    const level = this.props.level
     const grands = []
     const leaves = []
 
@@ -47,10 +48,13 @@ class Child extends Component {
 
     const printFiller = i => {
       const line2filler = []
+      console.log(level + '<<<--- push filler3')
       for (var j = 0; j < i; j++) {
+        console.log(level + ' filler3-' + j)
         line2filler.push(<div className='filler ' key={'emptyitem-' + j}></div>)
       }
-      /* <span>lvlenline{this.props.level + 1} </span> */
+      /* <span>lvlenline{this.props.level} </span> */
+      console.log(level + '        push filler3 --->>>')
 
       const encloseline2 = (
         <div className='fillergroup ' key={'emptygroup'}>
@@ -61,6 +65,7 @@ class Child extends Component {
     }
 
     const printChildItem = myname => {
+      console.log(level + ' childitem-' + myname)
       const line2child = (
         <div className={'item '} key={myname + 'item'} onClick={e => saveClick(myname, e)}>
           {myname}
@@ -74,10 +79,11 @@ class Child extends Component {
       const myname = mydata.name
       const line2childs = printChildItem(myname)
       line2childs && line2.push(line2childs)
+      console.log(level + ' push childitem-' + myname)
 
       //sign
-      const mysign = addsign(myname)
-      mysign && line2.push(mysign)
+      // const mysign = addsign(myname)
+      // mysign && line2.push(mysign)
     }
 
     // var grandchildindex = 0
@@ -95,9 +101,10 @@ class Child extends Component {
       // const htmlFromCMS2 = '</span</div><div class="container"><span>'
       // <span dangerouslySetInnerHTML={{ __html: htmlFromCMS2 }} />
 
+      console.log(level + '<<<--- push grand-' + myname)
       const mygrand = (
-        <Fragment key={myname + '-fragchild' + this.props.level + 1}>
-          {/* <span>lvlgrand{this.props.level + 1}</span> */}
+        <Fragment key={myname + '-fragchild' + this.props.level}>
+          {/* <span>lvlgrand{this.props.level}</span> */}
           <Child
             children={grandchild}
             key={myname + '-child'}
@@ -106,6 +113,7 @@ class Child extends Component {
           ></Child>
         </Fragment>
       )
+      console.log(level + '        push grand-' + myname + ' --->>>')
       grands.push(mygrand)
     }
 
@@ -113,6 +121,7 @@ class Child extends Component {
       // second level child
       const myname = mydata.name
       const mynewlist = mydata.list
+      console.log(level + '<<<--- line4-' + myname)
       if (mynewlist) {
         const my4th = (
           <Line4
@@ -125,6 +134,7 @@ class Child extends Component {
 
         leaves.push(my4th)
       }
+      console.log(level + '         line4-' + myname + ' --->>>')
     }
 
     if (children.length > 0) {
@@ -145,8 +155,7 @@ class Child extends Component {
 
       children.filter(f => f.list).forEach(addLine4)
       const itemfound = Object.values(arrshow).includes(true)
-      /* <span>lvlline{this.props.level + 1}</span>  */
-      // debugger
+      /* <span>lvlline{this.props.level}</span>  */
       if (leaves.length > 0) {
         var line4
         if (itemfound) {
@@ -156,10 +165,11 @@ class Child extends Component {
         }
       }
 
+      console.log(level + ' lastline')
       var lastline
       if (this.props.level === 2) {
         lastline = (
-          <Fragment key={'fraglastline' + this.props.level + 1}>
+          <Fragment key={'fraglastline' + this.props.level}>
             <div className='mysamerow'>
               {/* <div className='container'> */}
               {line3}
@@ -169,7 +179,7 @@ class Child extends Component {
         )
       } else {
         lastline = (
-          <Fragment key={'fraglastline' + this.props.level + 1}>
+          <Fragment key={'fraglastline' + this.props.level}>
             {line3} {line4}
           </Fragment>
         )
@@ -177,7 +187,7 @@ class Child extends Component {
     }
 
     return (
-      <Fragment key={'outer' + this.props.level + 1}>
+      <Fragment key={'outer' + this.props.level}>
         <div className={'myrow '}>{line2}</div>
         {lastline}
       </Fragment>

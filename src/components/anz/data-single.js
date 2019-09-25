@@ -12,6 +12,14 @@ var data = {
           name: 'Rain',
           list: ['Facility 6'],
         },
+        {
+          name: 'Another',
+          children: [
+            {
+              name: 'Last',
+            },
+          ],
+        },
       ],
     },
   ],
