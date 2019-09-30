@@ -3,7 +3,7 @@ export default (state = {}, action) => {
     case 'workflow': {
       return {
         ...state,
-        current: action.data,
+        current: action.workflow,
       }
     }
     default:

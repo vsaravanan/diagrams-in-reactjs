@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* background-color: #D6E9FE; */
+  background-color: #D6E9FE;
 }
 
 body {
@@ -16,14 +16,9 @@ body {
   align-items: center;
 }
 
-/* .container2 {
-  display: flex;
-  flex-flow: column wrap;
-  flex-wrap: wrap;
-} */
 
 .mysamerow {
-  display: flex;
+  display: flex !important;
   justify-content: center;
   align-self: center;
 }
@@ -42,7 +37,7 @@ body {
   align-items: center;
   border: 1px solid #000;
   width : 10vw;
-  height : 10vh;
+  height : 11vh;
   margin: 2vw;
 }
 
@@ -66,7 +61,7 @@ body {
 
 .item-relative {
   position: relative;
-  left: -7vw;
+  left: -8vw;
   align-self: flex-end;
   background-color:rgb(80, 189, 153);
   height: 3vh;
@@ -81,8 +76,13 @@ ul {
 }
 
 
-.break {
-  flex-basis: 50%;
-  width:50;
-  /* height: 0; */
+
+.show {
+  display: block;
+  visibility: visible;
+}
+
+.hide {
+  display: none;
+  visibility: hidden;
 }
