@@ -1,7 +1,7 @@
 
 # Reactive flow chart diagram developed from reactjs and redux 
-[![video](./screenshots/dashboard.png?raw=true)](https://youtu.be/0xuhMYlJE4o)
+[![Watch youtube video](./screenshots/dashboard.png?raw=true)](https://youtu.be/0xuhMYlJE4o)
 
 
-[Download video](https://github.com/vsaravanan/diagrams-in-reactjs/blob/master/screenshots/ReactiveFlowChartDiagramsInReactJsAndRedux.mp4)
+[or watch direct video](https://demo.saravan-js.com/file/ReactiveFlowChartDiagramsInReactJsAndRedux.mp4)
 
