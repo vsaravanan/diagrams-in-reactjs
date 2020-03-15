@@ -3,5 +3,6 @@
 [![Watch youtube video](./screenshots/dashboard.png?raw=true)](https://youtu.be/0xuhMYlJE4o)
 
 
-[or watch direct video](https://demo.saravan-js.com/file/ReactiveFlowChartDiagramsInReactJsAndRedux.mp4)
-
+<font size="6">
+	[or watch direct video](https://demo.saravan-js.com/file/ReactiveFlowChartDiagramsInReactJsAndRedux.mp4)
+</font>
